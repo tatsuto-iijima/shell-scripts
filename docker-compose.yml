@@ -1,0 +1,15 @@
+services:
+  ubuntu-22.04:
+    build:
+      context: .
+      dockerfile: ./docker/ubuntu-22.04.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/shell-scripts
+  redhat-ubi8:
+    build:
+      context: .
+      dockerfile: ./docker/redhat-ubi8.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/shell-scripts
