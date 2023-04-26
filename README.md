@@ -1,5 +1,7 @@
 # shell-scripts
 
+![CI](https://github.com/tatsuto-iijima/shell-scripts/actions/workflows/test.yml/badge.svg)
+
 A collection of shell scripts
 
 ## Requirements

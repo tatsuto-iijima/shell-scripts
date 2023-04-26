@@ -1,0 +1,22 @@
+---
+name: CI
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+  pull_request:
+    branches:
+      - main
+      - 'release/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test
+        run: |
+          docker-compose up -d
+          docker-compose exec ubuntu-22.04 sh -c "cd /usr/local/src/shell-scripts && shellspec"
+          docker-compose exec redhat-ubi8 sh -c "cd /usr/local/src/shell-scripts && shellspec"
+          docker-compose down
