@@ -10,13 +10,17 @@ on:
       - main
       - 'release/**'
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Test
-        run: |
-          docker-compose up -d
-          docker-compose exec ubuntu-22.04 sh -c "cd /usr/local/src/shell-scripts && shellspec"
-          docker-compose exec redhat-ubi8 sh -c "cd /usr/local/src/shell-scripts && shellspec"
-          docker-compose down
+      - name: container start
+        run: docker-compose up -d
+      - name: test on ubuntu 22.04
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T ubuntu-22.04 sh -c "cd /usr/local/src/shell-scripts && shellspec"
+      - name: test on redhat 8
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T redhat-ubi8 sh -c "cd /usr/local/src/shell-scripts && shellspec"
+      - name: container stop
+        run: docker-compose down
