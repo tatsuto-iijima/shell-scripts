@@ -13,6 +13,8 @@
 #   -j  Convert UNIXTIME to JST
 #   -h  Show help
 
+. $(cd $(dirname $0);cd ../;pwd)/lib/unixtime2datetime.sh
+
 # Function help() shows help
 help() {
   awk 'NR > 2 {
@@ -47,11 +49,10 @@ do
   DATA=$(echo $LINE | sed -E "s/^\[(.*)\](.*)$/\2/")
   if [[ "$UNIXTIME_INT" =~ ^[0-9]+$ ]]; then
     if [ $FLAG_J = "TRUE" ]; then
-      TIMESTAMP_JST=$(($UNIXTIME_INT + 32400))
-      TIMESTAMP=$(date +%Y-%m-%dT%H:%M:%S --date "@$TIMESTAMP_JST")
+      TIMESTAMP=$(unixtime2datetime $UNIXTIME_INT JST-9 +%Y-%m-%dT%H:%M:%S)
       echo "${TIMESTAMP}${UNIXTIME_DEC}+0900${DATA}"
     else
-      TIMESTAMP=$(date +%Y-%m-%dT%H:%M:%S --date "@$UNIXTIME_INT")
+      TIMESTAMP=$(unixtime2datetime $UNIXTIME_INT UTC +%Y-%m-%dT%H:%M:%S)
       echo "${TIMESTAMP}${UNIXTIME_DEC}+0000${DATA}"
     fi
   else
