@@ -12,14 +12,14 @@ The supported platforms are as follows:
 
 ## Scripts
 
-### pingconv.sh
+### pingconv
 
 - Script to convert UNIXTIME in ping command to datetime format.
 - Receive the output of the ping command on standard input.
 
 ```
 Usage:
-  pingconv.sh [-jh]
+  pingconv [-jh]
 
 Options:
   -j  Convert UNIXTIME to JST

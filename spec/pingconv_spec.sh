@@ -1,14 +1,14 @@
-Describe 'pingconv.sh'
+Describe 'pingconv'
   It 'show help'
-    When run ./bin/pingconv.sh -h
-    The line 1 should equal 'pingconv.sh'
+    When run ./bin/pingconv -h
+    The line 1 should equal 'pingconv'
     The line 2 should equal '==============='
     The line 3 should equal ''
     The line 4 should equal 'Script to convert UNIXTIME in ping command to datetime format.'
     The line 5 should equal 'Receive the output of the ping command on standard input.'
     The line 6 should equal ''
     The line 7 should equal 'Usage:'
-    The line 8 should equal '  pingconv.sh [-jh]'
+    The line 8 should equal '  pingconv [-jh]'
     The line 9 should equal ''
     The line 10 should equal 'Options:'
     The line 11 should equal '  -j  Convert UNIXTIME to JST'
@@ -17,13 +17,13 @@ Describe 'pingconv.sh'
   End
 
   It 'wrong option'
-    When run ./bin/pingconv.sh -a
-    The error should include 'pingconv.sh'
+    When run ./bin/pingconv -a
+    The error should include 'pingconv'
     The error should include '==============='
     The error should include 'Script to convert UNIXTIME in ping command to datetime format.'
     The error should include 'Receive the output of the ping command on standard input.'
     The error should include 'Usage:'
-    The error should include 'pingconv.sh [-jh]'
+    The error should include 'pingconv [-jh]'
     The error should include 'Options:'
     The error should include '-j  Convert UNIXTIME to JST'
     The error should include '-h  Show help'
@@ -48,7 +48,7 @@ Describe 'pingconv.sh'
     #|10 packets transmitted, 10 received, 0% packet loss, time 9199ms
     #|rtt min/avg/max/mdev = 0.227/0.306/0.425/0.074 ms
     End
-    When run ./bin/pingconv.sh
+    When run ./bin/pingconv
     The line 1 should equal 'PING localhost (127.0.0.1) 56(84) bytes of data.'
     The line 2 should equal '64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.227 ms'
     The line 3 should equal '64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.230 ms'
@@ -85,7 +85,7 @@ Describe 'pingconv.sh'
     #|10 packets transmitted, 10 received, 0% packet loss, time 9210ms
     #|rtt min/avg/max/mdev = 0.132/0.278/0.358/0.074 ms
     End
-    When run ./bin/pingconv.sh
+    When run ./bin/pingconv
     The line 1 should equal 'PING localhost (127.0.0.1) 56(84) bytes of data.'
     The line 2 should equal '2023-04-26T11:34:40.576657+0000 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.132 ms'
     The line 3 should equal '2023-04-26T11:34:41.615407+0000 64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.358 ms'
@@ -122,7 +122,7 @@ Describe 'pingconv.sh'
     #|10 packets transmitted, 10 received, 0% packet loss, time 9210ms
     #|rtt min/avg/max/mdev = 0.132/0.278/0.358/0.074 ms
     End
-    When run ./bin/pingconv.sh -j
+    When run ./bin/pingconv -j
     The line 1 should equal 'PING localhost (127.0.0.1) 56(84) bytes of data.'
     The line 2 should equal '2023-04-26T20:34:40.576657+0900 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.132 ms'
     The line 3 should equal '2023-04-26T20:34:41.615407+0900 64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.358 ms'
