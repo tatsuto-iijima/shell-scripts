@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# listmd5
+# ===============
+#
+# A script that outputs an MD5 list of each file based on the file list received as standard input.
+
+while read LINE
+do
+  md5sum "$LINE"
+done

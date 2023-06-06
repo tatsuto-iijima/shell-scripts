@@ -1,8 +1,8 @@
 services:
-  ubuntu-22.04:
+  amazonlinux2023:
     build:
       context: .
-      dockerfile: ./docker/ubuntu-22.04.dockerfile
+      dockerfile: ./docker/amazonlinux2023.dockerfile
     tty: true
     volumes:
       - .:/usr/local/src/my-shell-scripts
@@ -10,6 +10,20 @@ services:
     build:
       context: .
       dockerfile: ./docker/redhat-ubi8.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
+  redhat-ubi9:
+    build:
+      context: .
+      dockerfile: ./docker/redhat-ubi9.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
+  ubuntu22.04:
+    build:
+      context: .
+      dockerfile: ./docker/ubuntu22.04.dockerfile
     tty: true
     volumes:
       - .:/usr/local/src/my-shell-scripts

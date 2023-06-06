@@ -7,8 +7,10 @@ A collection of shell scripts
 ## Requirements
 
 The supported platforms are as follows:
-- Ubuntu 22.04
+- AmazonLinux 2023
 - RHEL 8
+- RHEL 9
+- Ubuntu 22.04
 
 ## Scripts
 
@@ -24,4 +26,13 @@ Usage:
 Options:
   -j  Convert UNIXTIME to JST
   -h  Show help
+```
+
+### listmd5
+
+- A script that outputs an MD5 list of each file based on the file list received as standard input.
+
+```
+Usage:
+  listmd5
 ```
