@@ -1,6 +1,6 @@
-# shell-scripts
+# my-shell-scripts
 
-![CI](https://github.com/tatsuto-iijima/shell-scripts/actions/workflows/test.yml/badge.svg)
+![CI](https://github.com/tatsuto-iijima/my-shell-scripts/actions/workflows/test.yml/badge.svg)
 
 A collection of shell scripts
 
