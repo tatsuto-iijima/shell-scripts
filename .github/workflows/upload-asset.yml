@@ -5,7 +5,7 @@ on:
     types:
       - released
 jobs:
-  test:
+  upload-asset:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,12 +34,12 @@ jobs:
 
       - name: Build project
         run: |
-          mkdir ${{ github.event.repository.name }}-${{ github.ref }}
-          cp -r ./bin ./lib LICENSE README.md ${{ github.event.repository.name }}-${{ github.ref }}
-          tar zcvf ${{ github.event.repository.name }}-${{ github.ref }}.tar.gz ${{ github.event.repository.name }}-${{ github.ref }}
+          mkdir ${{ github.event.repository.name }}-${{ github.ref_name }}
+          cp -r ./bin ./lib LICENSE README.md ${{ github.event.repository.name }}-${{ github.ref_name }}
+          tar zcvf ${{ github.event.repository.name }}-${{ github.ref_name }}.tar.gz ${{ github.event.repository.name }}-${{ github.ref_name }}
 
       - name: Upload Release Asset
         uses: shogo82148/actions-upload-release-asset@v1
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./${{ github.event.repository.name }}-${{ github.ref }}.tar.gz
+          asset_path: ./${{ github.event.repository.name }}-${{ github.ref_name }}.tar.gz
