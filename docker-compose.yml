@@ -1,8 +1,36 @@
 services:
+  almalinux8:
+    build:
+      context: .
+      dockerfile: ./docker/almalinux8.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
+  almalinux9:
+    build:
+      context: .
+      dockerfile: ./docker/almalinux9.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
   amazonlinux2023:
     build:
       context: .
       dockerfile: ./docker/amazonlinux2023.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
+  debian11:
+    build:
+      context: .
+      dockerfile: ./docker/debian11.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
+  debian12:
+    build:
+      context: .
+      dockerfile: ./docker/debian12.dockerfile
     tty: true
     volumes:
       - .:/usr/local/src/my-shell-scripts
@@ -24,6 +52,13 @@ services:
     build:
       context: .
       dockerfile: ./docker/ubuntu22.04.dockerfile
+    tty: true
+    volumes:
+      - .:/usr/local/src/my-shell-scripts
+  ubuntu24.04:
+    build:
+      context: .
+      dockerfile: ./docker/ubuntu24.04.dockerfile
     tty: true
     volumes:
       - .:/usr/local/src/my-shell-scripts

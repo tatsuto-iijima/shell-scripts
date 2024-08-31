@@ -18,9 +18,25 @@ jobs:
       - name: Container start
         run: docker-compose up -d
 
+      - name: Test on AlmaLinux 8
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T almalinux8 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
+
+      - name: Test on AlmaLinux 9
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T almalinux9 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
+
       - name: Test on AmazonLinux 2023
         # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
         run: docker-compose exec -T amazonlinux2023 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
+
+      - name: Test on Debian 11
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T debian11 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
+
+      - name: Test on Debian 12
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T debian12 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
 
       - name: Test on RedHat 8
         # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
@@ -33,6 +49,10 @@ jobs:
       - name: Test on Ubuntu 22.04
         # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
         run: docker-compose exec -T ubuntu22.04 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
+
+      - name: Test on Ubuntu 24.04
+        # Add an option "-T" as a countermeasure for the error "the input device is not a TTY"
+        run: docker-compose exec -T ubuntu24.04 sh -c "cd /usr/local/src/my-shell-scripts && shellspec"
 
       - name: Container stop
         run: docker-compose down

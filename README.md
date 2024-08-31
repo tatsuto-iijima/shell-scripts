@@ -7,10 +7,15 @@ A collection of shell scripts
 ## Requirements
 
 The supported platforms are as follows:
+- AlmaLinux 8
+- AlmaLinux 9
 - AmazonLinux 2023
+- Debian 11
+- Debian 12
 - RHEL 8
 - RHEL 9
 - Ubuntu 22.04
+- Ubuntu 24.04
 
 ## Scripts
 
